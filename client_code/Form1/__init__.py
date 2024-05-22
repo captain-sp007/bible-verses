@@ -35,15 +35,27 @@ class Form1(Form1Template):
 
   def display_random_verse(self):
         # Call the server function to get a random verse
-        random_verse = anvil.server.call('get_random_verse')
+        self.verse_data = anvil.server.call('get_random_verse')
         
         # Clear the current components in the column panel
         self.column_panel_1.clear()
         
         # Create Labels for the reference and verse
-        reference_label = Label(text=random_verse["reference"], bold=True)
-        verse_label = Label(text=random_verse["verse"])
+        reference_label = Label(text=self.verse_data["reference"], bold=True)
+        verse_label = Label(text=self.verse_data["verse"])
         
         # Add the labels to the ColumnPanel
         self.column_panel_1.add_component(reference_label)
         self.column_panel_1.add_component(verse_label)
+
+  def send_email_button_click(self, **event_args):
+        email = self.email_textbox.text
+        
+        if email:
+            # Call the server function to send the verse to the email
+            anvil.server.call('send_verse_to_email', email, self.verse_data)
+            Notification("Verset envoyé!", timeout=5).show()
+        else:
+            Notification("Entrer une adresse mail valide.", timeout=5).show()
+
+ 

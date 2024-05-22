@@ -6,6 +6,9 @@ services:
 - source: /runtime/services/anvil/files.yml
   client_config: {}
   server_config: {file_table: files}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {}
 package_name: Bible_Verses
 allow_embedding: false
 name: Bible Verses

@@ -4,8 +4,8 @@ from anvil.tables import app_tables
 import anvil.files
 from anvil.files import data_files
 import anvil.server
-import pandas as pd
 import random
+import anvil.email
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -34,3 +34,14 @@ def get_random_verse():
         "reference": random_row['reference'],
         "verse": random_row['verse']
     }
+
+@anvil.server.callable
+def send_verse_to_email(email, verse_data):
+    
+    anvil.email.send(
+        to=email,
+        from_name="Le Réveil des Mères Sentinelles",       
+        subject="Ma carte prophétique",
+        html=f"<b>{verse_data['reference']}</b>: {verse_data['verse']}",
+       
+    )

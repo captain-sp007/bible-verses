@@ -309,16 +309,16 @@ color_scheme:
   - {name: Secondary, color: '#625B71'}
   - {name: Secondary Container, color: '#E8DEF8'}
   - {name: On Secondary, color: '#FFFFFF'}
-  - {name: On Secondary Container, color: '#1E192B'}
+  - {name: On Secondary Container, color: '#FFFFFF'}
   - {name: Tertiary, color: '#7D5260'}
   - {name: Tertiary Container, color: '#FFD8E4'}
   - {name: On Tertiary, color: '#FFFFFF'}
-  - {name: On Tertiary Container, color: '#370B1E'}
+  - {name: On Tertiary Container, color: '#FFFFFF'}
   - {name: Error, color: '#B3261E'}
   - {name: Background, color: '#175f51'}
   - {name: Surface, color: '#FFFBFE'}
-  - {name: On Background, color: '#1C1B1F'}
-  - {name: On Surface, color: '#1C1B1F'}
+  - {name: On Background, color: '#FFFFFF'}
+  - {name: On Surface, color: '#FFFFFF'}
   - {name: Surface Variant, color: '#E7E0EC'}
   - {name: On Surface Variant, color: '#49454E'}
   - {name: Outline, color: '#79747E'}
