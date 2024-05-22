@@ -2,8 +2,10 @@ unique_ids:
   forms:
     Form1: 7DQT6ROZG2PNUBG2WIGBHVUDU6H3Q4YF
   modules: {}
-  server_modules: {}
+  server_modules:
+    ServerModule1: '171639127809947065931390.21098'
   assets:
+    Flyer.jpg: '171639111499463778863259.336464'
     standard-page.html: SL3ZI5X3DUW2M4ARVXR7OZFU7P4ZVUPH
     theme.css: LSSPH4ZHSYMRCVS2MVOHWIINPA3WXI4A
   scripts: {}
