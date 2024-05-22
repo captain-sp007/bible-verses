@@ -14,19 +14,17 @@ import random
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
-    self.init_components(**properties)
+  #Search the table with client code authorization to search into it
+        self.item = app_tables.bibleverses.search()[1]
+
+    #Test code for 1 verse
+        #self.item = {
+        #  'reference': 'Proverbes 3:5-6',
+        #   'verse': 'Confie-toi en l’Éternel de tout ton cœur, Et ne t’appuie pas sur ta sagesse ; Reconnais-le dans toutes tes voies, Et il aplanira tes sentiers',
+        # }
+      # Set Form properties and Data Bindings.
+        self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
 
-
-        # Define the Bible verses
-        bible_verses = [
-            {"reference": "John 3:16", "verse": "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."},
-            {"reference": "Psalm 23:1", "verse": "The Lord is my shepherd, I lack nothing."},
-            {"reference": "Philippians 4:13", "verse": "I can do all this through him who gives me strength."},
-            # Add more verses as needed
-        ]
-
-        # Bind the bible_verses data to the DataGrid
-        self.data_grid_1.items = bible_verses
 

@@ -32,14 +32,14 @@ db_schema:
       type: string
     title: Files
   bibleverses:
-    client: none
+    client: search
     server: full
     columns:
-    - name: Reference
-      admin_ui: {width: 200, order: 0}
+    - name: reference
+      admin_ui: {order: 0, width: 200}
       type: string
-    - name: Verse
-      admin_ui: {width: 200}
+    - name: verse
+      admin_ui: {order: 1, width: 200}
       type: string
     title: BibleVerses
 renamed: true
