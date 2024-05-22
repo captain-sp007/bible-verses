@@ -33,7 +33,7 @@ db_schema:
     title: Files
   bibleverses:
     client: search
-    server: full
+    server: search
     columns:
     - name: reference
       admin_ui: {order: 0, width: 200}
