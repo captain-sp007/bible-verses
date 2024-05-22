@@ -19,30 +19,18 @@ import random
 #   return 42
 #
 
-
 @anvil.server.callable
-def get_verse_by_id(identifier):
-    # Check if there is an existing mapping for this identifier
-    mapping = app_tables.identifier_to_verse.get(identifier=identifier)
+def get_random_verse():
+    # Fetch all rows from the BibleVerses table
+    rows = app_tables.bibleverses.search()
     
-    if mapping:
-        # If there's a mapping, fetch the verse
-        verse_row = mapping['verse']
-    else:
-        # If there's no mapping, assign a new verse randomly
-        verse_row = random.choice(list(app_tables.bibleverses.search()))
-        app_tables.identifier_to_verse.add_row(identifier=identifier, verse=verse_row)
+    # Convert to a list
+    rows_list = list(rows)
+    
+    # Select a random row
+    random_row = random.choice(rows_list)
     
     return {
-        "reference": verse_row['reference'],
-        "verse": verse_row['verse']
+        "reference": random_row['reference'],
+        "verse": random_row['verse']
     }
-
-@anvil.server.callable
-def initialize_device():
-    # Generate a new unique identifier for the device
-    import uuid
-    new_identifier = str(uuid.uuid4())
-    
-    # Return the new identifier
-    return new_identifier

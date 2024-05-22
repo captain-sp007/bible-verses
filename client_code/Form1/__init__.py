@@ -1,54 +1,49 @@
+
 from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-import anvil.server
 import anvil.http
-import anvil.js
+import anvil.server
+import random
 
 
 
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
-  
+
+  #Test code to search the table with client code authorization OK to search into it
+        # self.item = app_tables.bibleverses.search()[1]
+
+    #Test code for 1 verse
+        #self.item = {
+        #  'reference': 'Proverbes 3:5-6',
+        #   'verse': 'Confie-toi en l’Éternel de tout ton cœur, Et ne t’appuie pas sur ta sagesse ; Reconnais-le dans toutes tes voies, Et il aplanira tes sentiers',
+        # }
       # Set Form properties and Data Bindings.
-      self.init_components(**properties)
+        self.init_components(**properties)
+
+
+
 
     # Any code you write here will run before the form opens.
-    
-      # Retrieve or initialize the unique identifier for the device
-      self.identifier = self.get_device_identifier()
-        
-      # Fetch and display the verse
-      self.display_persistent_verse()
 
-  def get_device_identifier(self):
-      # Try to get the identifier from the cookies
-      identifier = anvil.js.window.document.cookie.split('; ').find(lambda x: x.startswith('device_identifier='))
-        
-      if identifier:
-          identifier = identifier.split('=')[1]
-      else:
-          # If no identifier is found, initialize a new one
-          identifier = anvil.server.call('initialize_device')
-          # Set the identifier as a cookie with an expiration date far in the future
-          anvil.js.window.document.cookie = f'device_identifier={identifier}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/'
-        
-      return identifier
+        # Fetch a random verse when the form initializes
+        self.display_random_verse()
 
-  def display_persistent_verse(self):
-      # Call the server function to get the verse for this identifier
-      verse_data = anvil.server.call('get_verse_by_id', self.identifier)
+  def display_random_verse(self):
+        # Call the server function to get a random verse
+        random_verse = anvil.server.call('get_random_verse')
         
-      # Clear the current components in the column panel
-      self.column_panel_1.clear()
+        # Clear the current components in the column panel
+        self.column_panel_1.clear()
         
-      # Create Labels for the reference and verse
-      reference_label = Label(text=verse_data["reference"], bold=True)
-      verse_label = Label(text=verse_data["verse"], wrap_on='anywhere')
+        # Create Labels for the reference and verse
+        reference_label = Label(text=random_verse["reference"], bold=True)
+        verse_label = Label(text=random_verse["verse"])
         
-      # Add the labels to the ColumnPanel
-      self.column_panel_1.add_component(reference_label)
-      self.column_panel_1.add_component(verse_label)
+        # Add the labels to the ColumnPanel
+        self.column_panel_1.add_component(reference_label)
+        self.column_panel_1.add_component(verse_label)
