@@ -19,18 +19,18 @@ import random
 #   return 42
 #
 
-# Load the CSV file
 @anvil.server.callable
 def get_random_verse():
-    df = pd.read_csv(anvil.server.get_app_origin() + "/_/anvil/media/bible_verses.csv")
+    # Fetch all rows from the BibleVerses table
+    rows = app_tables.bibleverses.search()
     
-    # Use the device's unique ID for a consistent "random" verse
-    device_id = anvil.server.get_current_device()['id']
-    random.seed(device_id)
+    # Convert to a list
+    rows_list = list(rows)
     
-    random_verse = df.sample(1).iloc[0]
+    # Select a random row
+    random_row = random.choice(rows_list)
     
     return {
-        'reference': random_verse['reference'],
-        'verse': random_verse['verse']
+        "reference": random_row['reference'],
+        "verse": random_row['verse']
     }
