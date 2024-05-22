@@ -21,24 +21,14 @@ components:
     properties: {height: 32}
     type: Spacer
     layout_properties: {grid_position: 'ZGMNAO,XSUJGW THVGFN,TLEIWZ'}
-  - name: reference_label
-    properties: {role: headline, foreground: 'theme:Primary', spacing_above: large,
-      spacing_below: large, bold: true, underline: false, icon: ''}
-    type: Label
-    layout_properties: {grid_position: 'ZGMNAO,XSUJGW QBVVMT,LWPKKJ'}
-    data_bindings:
-    - {property: text, code: 'self.item[''reference'']', writeback: false}
-  - name: verse_label
-    properties: {role: title, foreground: 'theme:Primary', spacing_above: large, spacing_below: large,
-      italic: true}
-    type: Label
-    layout_properties: {grid_position: 'ZGMNAO,XSUJGW GWSAQH,KCPSOV'}
-    data_bindings:
-    - {property: text, code: 'self.item[''verse'']', writeback: false}
-  - name: linear_panel_2
-    properties: {}
-    type: LinearPanel
-    layout_properties: {grid_position: 'ZGMNAO,XSUJGW ANQLVJ,YKDTTK'}
+  - name: spacer_3
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'ZGMNAO,XSUJGW CDFFWA,CKJHJE'}
+  - name: spacer_4
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {grid_position: 'ZGMNAO,XSUJGW GGVPGQ,NFKFJX'}
   - name: column_panel_1
     properties: {}
     type: ColumnPanel
